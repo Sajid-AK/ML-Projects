@@ -1,0 +1,6 @@
+# It links the project directory to Python's site-packages(Setup.py)
+-e .
+
+# External dependencies
+numpy
+pandas
