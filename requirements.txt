@@ -1,6 +1,11 @@
 # It links the project directory to Python's site-packages(Setup.py)
--e .
+#-e .
 
 # External dependencies
 numpy
 pandas
+seaborn
+matplotlib
+scikit-learn
+catboost
+xgboost
