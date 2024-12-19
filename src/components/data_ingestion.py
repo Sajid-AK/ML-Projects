@@ -1,3 +1,7 @@
+''' The main aim of this data_ingestion.py file is that we can
+read the data from database or some other resources like API's 
+'''
+
 import os
 import sys
 from src.exception import CustomException
@@ -6,7 +10,10 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass #It automatically adds methods like __init__, __repr__, and __eq__.
-#By dataclass create variable directly , without 
+#By dataclass create variable directly  
+from src.components.data_transformation import DataTransfromation
+from src.components.data_transformation import DataTransformationConfig
+
 
 @dataclass
 class DataIngestionConfig:
@@ -47,7 +54,9 @@ class DataIngestion:
           except Exception as e:
                  raise CustomException(e,sys)
 
+if __name__=="__main__":
+    obj=DataIngestion()
+    train_data,test_data=obj.initiate_data_ingestion()
 
-if __name__ =='__main__':
-   obj = DataIngestion()
-   obj.initiate_data_ingestion()
+    data_transformation=DataTransfromation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transfromation(train_data,test_data)
