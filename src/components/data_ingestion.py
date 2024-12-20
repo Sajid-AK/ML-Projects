@@ -11,9 +11,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass #It automatically adds methods like __init__, __repr__, and __eq__.
 #By dataclass create variable directly  
+
+## Import From Data_Transformation 
 from src.components.data_transformation import DataTransfromation
 from src.components.data_transformation import DataTransformationConfig
 
+##Import from Model_Trainer.py
+from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainerConfig
 
 @dataclass
 class DataIngestionConfig:
@@ -60,3 +65,6 @@ if __name__=="__main__":
 
     data_transformation=DataTransfromation()
     train_arr,test_arr,_=data_transformation.initiate_data_transfromation(train_data,test_data)
+
+    modeltrainer= ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
